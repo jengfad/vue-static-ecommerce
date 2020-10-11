@@ -9,17 +9,23 @@
         <div>
             <a role="button" class="btn btn-lg btn-primary d-block" @click="addPaintingToCart">Add To Cart</a>
         </div>
+        <AddToCartPopup :showPopup="showPopup" :paintingName="paintingName" :paintingImage="paintingImage"/>
     </div>
 </template>
 
 <script>
 import paintings from '../../data/static';
+import AddToCartPopup from './AddToCartPopup';
 
 export default {
     name: 'AddToCartForm',
+    components: { AddToCartPopup },
     data: function() {
         return {
-            quantity: 1
+            quantity: 1,
+            showPopup: false,
+            paintingImage: '',
+            paintingName: ''
         }
     },
     computed: {
@@ -29,13 +35,12 @@ export default {
     },
     methods: {
         addPaintingToCart() {
-            console.log('selectedPainting', this.selectedPainting)
-
+            const self = this;
             // eslint-disable-next-line no-undef
             apicart.cart.manager.addItem(this.selectedPainting.productUrl, this.quantity, function (itemData) {
-                // addToCartPopupView.itemImage = this.selectedPainting.imageUrl;
-                // addToCartPopupView.itemName = itemData.name;
-                // addToCartPopupView.showModal = true;
+                self.paintingImage = itemData.dataUrl;
+                self.paintingName = itemData.name;
+                self.showPopup = true;
                 self.quantity = 1;
             });
         }

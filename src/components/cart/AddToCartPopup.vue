@@ -21,14 +21,32 @@
 </template>
 
 <script>
-import showCardBack from '../../shared/functions' 
+import showCardBack from '../../shared/functions';
+import Modal from '../../shared/Modal';
 export default {
     name: 'AddToCartPopup',
-    data: function() {
+    components: { Modal },
+    data() {
         return {
             showModal: false,
             itemName: '',
             itemImage: ''
+        }
+    },
+    props: {
+        showPopup: Boolean,
+        paintingName: String,
+        paintingImage: String
+    },
+    watch: {
+        showPopup: function(newVal) {
+            this.showModal = newVal
+        },
+        paintingName: function(newVal) {
+            this.itemName = newVal
+        },
+        paintingImage: function(newVal) {
+            this.itemImage = newVal
         }
     },
     methods: {
