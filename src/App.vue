@@ -16,7 +16,7 @@
                                   </div>
                                   <PaintingsSelectbox />
                               </div>
-                              <div id="painting-description-view"></div>
+                              <PaintingDescription />
                               <div id="add-to-cart-form-view"></div>
                           </div>
                       </div>
@@ -29,11 +29,13 @@
 
 <script>
 import PaintingsSelectbox from './components/paintings/PaintingsSelectbox.vue';
+import PaintingDescription from './components/paintings/PaintingDescription.vue';
 
 export default {
   name: 'App',
   components: {
     PaintingsSelectbox,
+    PaintingDescription,
   },
 }
 </script>
