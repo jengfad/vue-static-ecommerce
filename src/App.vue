@@ -17,6 +17,7 @@
                                     <PaintingsSelectbox />
                                 </div>
                                 <PaintingDescription />
+                                <AddToCartForm />
                                 <div id="add-to-cart-form-view"></div>
                             </div>
                         </div>
@@ -34,6 +35,7 @@
 import PaintingsSelectbox from './components/paintings/PaintingsSelectbox.vue';
 import PaintingDescription from './components/paintings/PaintingDescription.vue';
 import PaintingImage from './components/paintings/PaintingImage.vue';
+import AddToCartForm from './components/cart/AddToCartForm.vue';
 
 export default {
   name: 'App',
@@ -41,6 +43,7 @@ export default {
     PaintingsSelectbox,
     PaintingDescription,
     PaintingImage,
+    AddToCartForm
   },
 }
 </script>
