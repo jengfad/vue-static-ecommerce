@@ -4,27 +4,10 @@
       <div class="flip-card">
           <div class="flip-card-inner">
               <div class="flip-card-front mb-5">
-                  <div class="product-preview flex-column flex-md-row d-flex">
-                        <div class="product-info p-2 p-md-5 col-md-6">
-                            <h1 class="mb-5">
-                            <strong>My paintings shop!</strong>
-                            </h1>
-                            <div class="product-detail-info">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Painting</label>
-                                    </div>
-                                    <PaintingsSelectbox />
-                                </div>
-                                <PaintingDescription />
-                                <AddToCartForm />
-                                <div id="add-to-cart-form-view"></div>
-                            </div>
-                        </div>
-                        <div class="product-images p-2 p-md-5 col-md-6 bg-light align-items-center d-flex">
-                            <PaintingImage />
-                        </div>
-                  </div>
+                  <PaintingsHome />
+              </div>
+              <div class="flip-card-back border bg-light text-dark p-md-5 mb-5">
+                  <OrdersHome />
               </div>
           </div>
       </div>
@@ -32,19 +15,16 @@
 </template>
 
 <script>
-import PaintingsSelectbox from './components/paintings/PaintingsSelectbox.vue';
-import PaintingDescription from './components/paintings/PaintingDescription.vue';
-import PaintingImage from './components/paintings/PaintingImage.vue';
-import AddToCartForm from './components/cart/AddToCartForm.vue';
+
+import PaintingsHome from './components/paintings/PaintingsHome';
+import OrdersHome from './components/orders/OrdersHome';
 
 export default {
   name: 'App',
   components: {
-    PaintingsSelectbox,
-    PaintingDescription,
-    PaintingImage,
-    AddToCartForm
-  },
+      PaintingsHome,
+      OrdersHome
+  }
 }
 </script>
 

@@ -3,7 +3,7 @@
         <modal v-if="showModal" @close="showModal = false">
             <h3 slot="header">Cart Updated</h3>
             <div slot="body">
-                <p>
+                <p style="color: black">
                     Item <strong>{{ itemName}}</strong> was successfully added into the cart.
                 </p>
                 <img :src="itemImage" class="mw-100" alt>
@@ -21,10 +21,11 @@
 </template>
 
 <script>
-import showCardBack from '../../shared/functions';
+import toggleDisplayMixin from '../../shared/toggle-display-mixin';
 import Modal from '../../shared/Modal';
 export default {
     name: 'AddToCartPopup',
+    mixins: [toggleDisplayMixin],
     components: { Modal },
     data() {
         return {
@@ -33,26 +34,19 @@ export default {
             itemImage: ''
         }
     },
-    props: {
-        showPopup: Boolean,
-        paintingName: String,
-        paintingImage: String
-    },
+    props: ['data'],
     watch: {
-        showPopup: function(newVal) {
-            this.showModal = newVal
-        },
-        paintingName: function(newVal) {
-            this.itemName = newVal
-        },
-        paintingImage: function(newVal) {
-            this.itemImage = newVal
+        data: function(newVal) {
+            if (!newVal) return;
+            this.showModal = newVal.showModal;
+            this.itemName = newVal.itemName;
+            this.itemImage = newVal.itemName;
         }
     },
     methods: {
         showOrderRecapitulation() {
             this.showModal = false;
-            showCardBack();
+            this.showCardBack();
         }
     }
 }

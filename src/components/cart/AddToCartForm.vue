@@ -7,9 +7,9 @@
             <input type="number" v-model="quantity" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div>
-            <a role="button" class="btn btn-lg btn-primary d-block" @click="addPaintingToCart">Add To Cart</a>
+            <a role="button" class="btn btn-lg btn-dark d-block" @click="addPaintingToCart">Add To Cart</a>
         </div>
-        <AddToCartPopup :showPopup="showPopup" :paintingName="paintingName" :paintingImage="paintingImage"/>
+        <AddToCartPopup :data="data" />
     </div>
 </template>
 
@@ -23,9 +23,7 @@ export default {
     data: function() {
         return {
             quantity: 1,
-            showPopup: false,
-            paintingImage: '',
-            paintingName: ''
+            data: null
         }
     },
     computed: {
@@ -38,9 +36,11 @@ export default {
             const self = this;
             // eslint-disable-next-line no-undef
             apicart.cart.manager.addItem(this.selectedPainting.productUrl, this.quantity, function (itemData) {
-                self.paintingImage = itemData.dataUrl;
-                self.paintingName = itemData.name;
-                self.showPopup = true;
+                self.data = {
+                    showModal: true,
+                    itemImage: itemData.dataUrl,
+                    itemName: itemData.name
+                };
                 self.quantity = 1;
             });
         }
