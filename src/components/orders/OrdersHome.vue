@@ -4,10 +4,10 @@
 
         <form class="text-left col-md-6 ml-auto mr-auto mb-5">
             <div class="d-flex flex-column flex-md-row">
-                <!-- <div class="col-12 col-md-6 pl-md-0 form-group">
+                <div class="col-12 col-md-6 pr-md-0 form-group">
                     <label for="payment-methods">Payment method</label>
-                    <select id="payment-methods-selectbox-view"></select>
-                </div> -->
+                    <PaymentMethodsSelectbox :paymentMethods="paymentMethods"></PaymentMethodsSelectbox>
+                </div>
 
                 <div class="col-12 col-md-6 pr-md-0 form-group">
                     <label for="shipping-methods">Delivery method</label>
@@ -59,7 +59,7 @@
         </form>
         <div class="mb-5 px-1">
             <h2>Order recapitulation</h2>
-            <div id="order-recapitulation-view"></div>
+            <OrderCapitulation></OrderCapitulation>
         </div>
     </div>
 </template>
@@ -67,11 +67,15 @@
 <script>
 
 import ShippingMethodsSelectbox from './ShippingMethodsSelectbox'
+import PaymentMethodsSelectbox from './PaymentMethodsSelectbox'
+import OrderCapitulation from './OrderCapitulation'
 
 export default {
     name: 'OrdersHome',
     components: {
-        ShippingMethodsSelectbox
+        ShippingMethodsSelectbox,
+        PaymentMethodsSelectbox,
+        OrderCapitulation
     },
     data: function() {
         return {
